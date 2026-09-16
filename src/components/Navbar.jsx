@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { navLinks } from '../data/data';
 import { MenuIcon, XIcon } from 'lucide-react';
 
 const Navbar = () => {
 
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScrolled = () => {
+            setScrolled(window.scrollY > 10);
+        }
+        window.addEventListener('scroll', handleScrolled)
+        return () => window.removeEventListener('scroll', handleScrolled)
+    }, [])
 
     return (
         <>
-            <nav className='fixed top-0 z-20 px-auto w-full transition-all duration-300 bg-transparent'>
+            <nav className={`fixed top-0 z-20 px-auto w-full transition-all duration-300 ${scrolled ? 'bg-white/70 backdrop-blur-md': 'bg-transparent'}`}>
                 <div className='flex items-center justify-between font-medium py-4 mx-auto max-w-7xl'>
                     <a href='/'>
                         <img src='./assets/logo.svg' alt='logo' />
@@ -16,7 +25,7 @@ const Navbar = () => {
                     {/* {desktop navigation LINKS} */}
                     <div className='hidden md:flex items-center gap-10'>
                         {navLinks.map((link) => (
-                            <a href={link} key={link.name} className='hover:text-zinc-600'>
+                            <a href={link.href} key={link.name} className='hover:text-zinc-600'>
                                 {link.name}
                             </a>
                         ))}
