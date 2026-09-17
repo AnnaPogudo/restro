@@ -24,7 +24,7 @@ const Timing = () => {
                         {timingData.map((item, index) => (
                             <Animated key={index} delay={index * 0.15} className="flex justify-between items-center">
                                 <span className="font-mwdium text-zinc-500">{t(item.dayKey)}</span>
-                                <span className={`font-medium ${t(item.hoursKey) === 'Closed' || t(item.hoursKey) === 'Закрыто' ? 'text-zinc-400' : 'text-zinc-500'}`}>{t(item.hoursKey)}</span>
+                                <span className={`font-medium ${t(item.hoursKey) === 'Closed' || t(item.hoursKey) === 'Р—Р°РєСЂС‹С‚Рѕ' ? 'text-zinc-400' : 'text-zinc-500'}`}>{t(item.hoursKey)}</span>
                             </Animated>
                         ))}
                     </div>
