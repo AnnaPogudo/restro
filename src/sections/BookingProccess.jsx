@@ -1,9 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 import Animated from "../components/Animated"
 import { Star } from "lucide-react"
+import ReservationForm from './ReservationForm';
 
 const BookingProcess = () => {
     const { t } = useTranslation();
+    const [reservationVisible, setReservationVisible] = useState(false);
     const bookingSteps = [
         { number: '(01)', titleKey: 'booking.steps.01.title', descriptionKey: 'booking.steps.01.description' },
         { number: '(02)', titleKey: 'booking.steps.02.title', descriptionKey: 'booking.steps.02.description' },
@@ -13,7 +16,7 @@ const BookingProcess = () => {
 
     return (
         <section id='booking-process' className="px-auto mt-44">
-            <div className="max-w-7xl ma-auto grid md:grid-cols-2 gap-16 md:gap-25">
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-25">
                 <div className="flex flex-col text-center md:text-left">
                     <Animated delay={0.2}>
                         <p className="text-orange-500 font-medium uppercase mb-4">{t('booking.eyebrow')}</p>
@@ -42,7 +45,7 @@ const BookingProcess = () => {
                         </span>
                     </Animated>
                 </div>
-                <div className="space-y-14 text-left">
+                <div className="space-y-10 text-left">
                     {bookingSteps.map((step, index) => (
                         <Animated key={index} y={150} delay={index * 0.15} className="flex items-start gap-9 ">
                             <span className="text-orange-500 font-medium text-lg shrink-0">{step.number}</span>
@@ -52,8 +55,14 @@ const BookingProcess = () => {
                             </div>
                         </Animated>
                     ))}
+                    <Animated y={150} delay={bookingSteps.length * 0.15} className={`flex items-start justify-center gap-9 ${reservationVisible ? 'hidden' : 'block'}`}>
+                        <button type="button" onClick={() => setReservationVisible(true)} className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-full transition block text-center">
+                            {t('booking.steps.action')}
+                        </button>
+                    </Animated>
                 </div>
             </div>
+            {reservationVisible && <ReservationForm />}
         </section>
     )
 }

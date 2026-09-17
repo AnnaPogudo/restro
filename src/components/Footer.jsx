@@ -33,7 +33,7 @@ const Footer = () => {
                         </p>
                         <div className="flex flex-col gap-2.5">
                             {quickLinks.map((link, index) => (
-                                <Animated key={link.href} delay={index * 0.05}>
+                                <Animated key={`${link.nameKey}-${index}`} delay={index * 0.05}>
                                     <a href={link.href} className="text-zinc-600 hover:text-zinc-500">
                                         {t(link.nameKey)}
                                     </a>
@@ -63,7 +63,7 @@ const Footer = () => {
                         <p className="font-medium mb-5">{t('footer.sitemapTitle')}</p>
                         <div className="flex flex-col gap-2.5">
                             {sitemapLinks.map((link, index) => (
-                                <Animated key={link.href} delay={index * 0.05}>
+                                <Animated key={`${link.nameKey}-${index}`} delay={index * 0.05}>
                                     <a href={link.href} className="text-zinc-600 hover:text-zinc-500">
                                         {t(link.nameKey)}
                                     </a>

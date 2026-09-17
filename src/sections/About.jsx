@@ -47,8 +47,8 @@ const About = () => {
             <MapModal
                 isOpen={isMapOpen}
                 onClose={() => setIsMapOpen(false)}
-                title={t(restaurantPosition.titleKey)}
-                address={t(restaurantPosition.addressKey)}
+                titleKey={restaurantPosition.titleKey}
+                addressKey={restaurantPosition.addressKey}
             />
         </section>
     )
