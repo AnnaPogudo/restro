@@ -1,5 +1,5 @@
 import { useForm, ValidationError } from '@formspree/react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Animated from '../components/Animated';
 import ReservationDatePicker from '../components/ReservationDatePicker';
@@ -8,6 +8,13 @@ const ReservationForm = () => {
   const { t } = useTranslation();
   const [state, handleSubmit] = useForm('mgaveldw');
   const [formData, setFormData] = useState({ name: '', email: '', date: '', time: '' });
+  const successSectionRef = useRef(null);
+
+  useEffect(() => {
+    if (state.succeeded) {
+      successSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [state.succeeded]);
 
   const updateField = (field) => (event) => {
     setFormData((current) => ({ ...current, [field]: event.target.value }));
@@ -15,7 +22,7 @@ const ReservationForm = () => {
 
   if (state.succeeded) {
     return (
-      <section id="reservation-form" className="px-auto mt-44">
+      <section id="reservation-form" ref={successSectionRef} className="px-auto mt-44 scroll-mt-8">
         <div className="max-w-3xl mx-auto rounded-3xl bg-orange-50 px-6 py-16 text-center md:px-12">
           <p className="text-orange-500 font-medium uppercase mb-4">{t('reservation.eyebrow')}</p>
           <h2 className="text-4xl md:text-5xl">{t('reservation.success.title')}</h2>
@@ -27,11 +34,11 @@ const ReservationForm = () => {
 
   return (
     <section id="reservation-form" className="mt-44">
-<div className="max-w-5xl mx-auto grid gap-12 md:grid-cols-[1.2fr_1.2fr] justify-between">
-        <Animated y={30} className={`flex flex-col justify-center transition-transform duration-500 ease-out ${formData.date ? 'md:translate-y-24' : 'translate-y-0'}`}>
+      <div className="max-w-5xl mx-auto justify-between">
+        <Animated y={30} className="mb-4 flex flex-col items-center justify-center text-center">
           <p className="text-orange-400 font-medium uppercase mb-4">{t('reservation.eyebrow')}</p>
           <h2 className="text-4xl md:text-5xl font-urbanist font-medium">{t('reservation.title')}</h2>
-          <p className="mt-5 max-w-sm text-zinc-400">{t('reservation.description')}</p>
+          <p className="mt-5 text-left text-zinc-400 text-lg">{t('reservation.description')}</p>
         </Animated>
 
         <Animated y={30} delay={0.15}>
@@ -45,7 +52,7 @@ const ReservationForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={updateField('name')}
-                  className="w-full rounded-lg border border-slate-200 p-3 outline-none transition focus:border-orange-500"
+                  className="w-full rounded-full border border-slate-200 p-3 outline-none transition focus:border-orange-500"
                   required
                 />
                 <ValidationError prefix={t('reservation.name')} field="name" errors={state.errors} />
@@ -59,14 +66,14 @@ const ReservationForm = () => {
                   name="_replyto"
                   value={formData.email}
                   onChange={updateField('email')}
-                  className="w-full rounded-lg border border-slate-200 p-3 outline-none transition focus:border-orange-500"
+                  className="w-full rounded-full border border-slate-200 p-3 outline-none transition focus:border-orange-500"
                   required
                 />
                 <ValidationError prefix={t('reservation.email')} field="_replyto" errors={state.errors} />
               </div>
             </div>
 
-            <div>
+            <div className="mt-6">
               <ReservationDatePicker
                 date={formData.date}
                 time={formData.time}
@@ -82,7 +89,7 @@ const ReservationForm = () => {
             <button
               type="submit"
               disabled={state.submitting || !formData.date || !formData.time}
-              className="bg-orange-500 py-3 rounded-lg font-medium text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50"
+              className="bg-orange-500 py-3 rounded-full font-medium text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {state.submitting ? t('reservation.submitting') : t('reservation.submit')}
             </button>

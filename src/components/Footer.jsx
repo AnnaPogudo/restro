@@ -7,7 +7,7 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <footer className="px-auto relative mt-44 overflow-hidden">
+        <footer id='footer' className="px-auto relative mt-44 overflow-hidden">
             <div className="max-w-7xl mx-quto">
                 <div className="flex flex-wrap gap-6 justify-between pb-8">
                     <div className="flex flex-col items-start left-text">
@@ -78,7 +78,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="absolute inset-0 text-center select-none -z-1 pointer-events-none">
-                <span className="text-[300px] tracking-wide font-urbanist font-semibold text-zinc-100/70">Restro</span>
+                <span className="whitespace-nowrap text-[clamp(5rem,22vw,18.75rem)] leading-none tracking-wide font-urbanist font-semibold text-zinc-100/70">Restro</span>
             </div>
         </footer>
     )

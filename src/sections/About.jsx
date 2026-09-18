@@ -30,13 +30,14 @@ const About = () => {
                         <p className="mt-4.5 text-zinx-600 max-w-sm">{t('about.description')}</p>
                     </Animated>
 
-                    <Animated className="mt-9 bg-orange-500 text-white p-2 pr-8 rounded-lg flex items-center gap-3 w-fit hover:scale-105 duration-300">
+                    <Animated className="mt-9 bg-orange-500 text-white p-2 pr-8 rounded-lg flex items-center gap-3 w-fit hover:scale-105 duration-300"
+                        onClick={() => setIsMapOpen(true)}
+                    >
                         <img src='/assets/about.png' alt='Bistro Royale Location Preview' className="size-15 rounded-lg object-cover shrink-0" />
                         <div className="flex flex-col gap-2">
                             <p className="font-medium">{t('about.location')}</p>
                             <button
-                                onClick={() => setIsMapOpen(true)}
-                                className="text-left underline hover:no-underline cursor-pointer"
+                                className="text-left cursor-pointer"
                             >
                                 {t('about.mapButton')}
                             </button>
