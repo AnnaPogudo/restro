@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 import Animated from '../components/Animated';
 import { Star } from 'lucide-react';
+import ChefCapybara from '../components/CapibaraMaskot';
 
 const avatars = [
     "/assets/user-1.jpeg",
@@ -14,6 +15,7 @@ const HeroSection = () => {
 
     return (
         <section id='hero-section' className="flex flex-col items-center justify-center min-h-screen bg-[url(/assets/heroBanner.png)] bg-cover bg-center bg-no-repeat px-4 pt-20">
+            <ChefCapybara />
             <Animated y={-20} delay={0.2}>
                 <p className="text-orange-600 text-sm font-medium uppercase tracking-widest">
                     {t('hero.eyebrow')}

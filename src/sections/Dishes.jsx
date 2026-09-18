@@ -95,7 +95,7 @@ const Dishes = () => {
                         y={80}
                         delay={index * 0.1}
                         className="relative flex flex-col items-center text-center shrink-0 cursor-pointer"
-                        onMouseEnter={() => setRotate((prev) => ({ ...prev, [index]: (prev[index] || 0) + 180 }))}
+                        onMouseEnter={() => setRotate((prev) => ({ ...prev, [index]: (prev[index] || 0) + 90 }))}
                     >
                         <motion.div
                             animate={{ rotate: rotate[index] || 0 }}

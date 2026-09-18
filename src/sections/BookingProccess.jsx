@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Animated from "../components/Animated"
 import { Star } from "lucide-react"
 import ReservationForm from './ReservationForm';
@@ -7,6 +7,13 @@ import ReservationForm from './ReservationForm';
 const BookingProcess = () => {
     const { t } = useTranslation();
     const [reservationVisible, setReservationVisible] = useState(false);
+    const reservationFormRef = useRef(null);
+
+    useEffect(() => {
+        if (reservationVisible) {
+            reservationFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, [reservationVisible]);
     const bookingSteps = [
         { number: '(01)', titleKey: 'booking.steps.01.title', descriptionKey: 'booking.steps.01.description' },
         { number: '(02)', titleKey: 'booking.steps.02.title', descriptionKey: 'booking.steps.02.description' },
@@ -62,7 +69,11 @@ const BookingProcess = () => {
                     </Animated>
                 </div>
             </div>
-            {reservationVisible && <ReservationForm />}
+            {reservationVisible && (
+                <div ref={reservationFormRef} className="scroll-mt-8">
+                    <ReservationForm />
+                </div>
+            )}
         </section>
     )
 }

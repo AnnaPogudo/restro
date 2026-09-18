@@ -31,7 +31,7 @@ const Features = () => {
                 </Animated>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between gap-14 max-w-7xl ma-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-14 max-w-7xl mx-auto">
                 <div className="space-y-10 max-w-md">
                     {featuresData.map((item, index) => {
                         const IconComponent = iconMap[item.icon];
