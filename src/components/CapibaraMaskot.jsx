@@ -8,7 +8,7 @@ const ChefCapybara = () => {
       <motion.img
         src="/assets/chef-capybara.png"
         alt="Chef Capybara"
-        className="relative w-[350px] h-auto drop-shadow-2xl mx-auto"
+        className="relative w-85 h-auto drop-shadow-2xl mx-auto"
         animate={{
           y: [0, -12, 0],
           rotate: [-1.5, 1.5, -1.5],

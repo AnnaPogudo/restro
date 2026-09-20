@@ -14,7 +14,7 @@ const HeroSection = () => {
     const { t } = useTranslation();
 
     return (
-        <section id='hero-section' className="flex flex-col items-center justify-center min-h-screen bg-[url(/assets/heroBanner.png)] bg-cover bg-center bg-no-repeat px-4 pt-20">
+        <section id='hero-section' className="flex flex-col items-center justify-center min-h-screen bg-[url(/assets/heroBanner.png)] bg-cover bg-center bg-no-repeat px-4 py-20">
             <ChefCapybara />
             <Animated y={-20} delay={0.2}>
                 <p className="text-orange-600 text-sm font-medium uppercase tracking-widest">
