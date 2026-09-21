@@ -1,4 +1,9 @@
 {
+  
+  "loader.eyebrow": "Chef Capybara",
+  "loader.title": "Preparing your table for a memorable evening...",
+  "loader.desc": "Please wait a moment",
+  "loader.loading": "Loading...",
   "nav.bookTable": "Book a table",
   "nav.links.aboutUs": "About",
   "nav.links.dishes": "Dishes",

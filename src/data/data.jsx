@@ -46,11 +46,8 @@ export const sitemapLinks = [
 export const navLinks = [
     { nameKey: 'nav.links.aboutUs', href: '#about' },
     { nameKey: 'nav.links.dishes', href: '#dishes' },
-    { nameKey: 'nav.links.features', href: '#features' },
     { nameKey: 'nav.links.booking', href: '#booking-process' },
     { nameKey: 'nav.links.contact', href: '#footer' },
-    { nameKey: 'nav.links.timing', href: '#timing' },
-    { nameKey: 'nav.links.faq', href: '#faq' },
 ];
 
 export const restaurantPosition = {
