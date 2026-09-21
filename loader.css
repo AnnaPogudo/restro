@@ -1,0 +1,117 @@
+
+#initial-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+
+  background-image: url('/assets/heroBanner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: opacity 0.5s ease;
+}
+
+#initial-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 253, 247, 0.6);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+#initial-loader > * {
+  position: relative;
+  z-index: 1;
+}
+
+#initial-loader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#initial-loader .eyebrow {
+  font-family: system-ui, sans-serif;
+  color: #ea580c; /* orange-600 */
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 0 1.25rem;
+  animation: fade-up 0.6s ease 0.1s both;
+}
+
+#initial-loader .title {
+  font-family: 'Urbanist', system-ui, sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+  max-width: 36rem;
+  color: #18181b; /* zinc-900 */
+  margin: 0;
+  animation: fade-up 0.6s ease 0.2s both;
+}
+
+#initial-loader .desc {
+  font-family: system-ui, sans-serif;
+  color: #52525b; /* zinc-600 */
+  font-size: 1rem;
+  text-align: center;
+  max-width: 28rem;
+  margin: 0.75rem 0 0;
+  animation: fade-up 0.6s ease 0.3s both;
+}
+
+/* ─── строка: тарелка + текст ─── */
+#initial-loader .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: #52525b; /* zinc-600 */
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  animation: fade-up 0.6s ease 0.4s both;
+}
+
+#initial-loader .plate-loader {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 8px rgba(120, 53, 15, 0.16));
+  animation: spin 2.2s linear infinite;
+}
+
+#root {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+body.ready #root {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

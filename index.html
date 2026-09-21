@@ -1,13 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>restro</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chef Capybara</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/loader.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <div id="initial-loader">
+    <h1 class="title">Preparing your table<br>for a memorable evening...</h1>
+    <p class="desc">Please wait a moment</p>
+
+    <div class="row">
+      <img class="plate-loader" src="/assets/dish4.png" alt="" role="presentation" />
+      <span>Loading...</span>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
